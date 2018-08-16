@@ -23,7 +23,7 @@ public class Main extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
             Scene scene = new Scene(root,400,400);
             primaryStage.setTitle("AOT Browser");
-            primaryStage.getIcons().add(new Image("file:resource//icon.png"));
+            primaryStage.getIcons().add(new Image(getClass().getResource("/icon.png").toString()));
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch(Exception e) {
