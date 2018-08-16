@@ -1,40 +1,33 @@
 package sample;
 
 
-import javafx.
+
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Region;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebEvent;
-import javafx.scene.web.WebView;
-import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.geometry.HPos;
-import javafx.geometry.VPos;
+import javafx.stage.Stage;
 
 public class Controller implements Initializable {
+    @FXML
+    private AnchorPane anchor;
     @FXML
     private Button move;
     @FXML
     private TextField url;
     @FXML
-    private Region web;
+    private Browser web;
     @FXML
     private CheckBox check;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         web=new Browser();
-        Browser b=(Browser)web;
+        Browser b= web;
         url.setText(b.webEngine.getLocation());
         move.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -61,6 +54,20 @@ public class Controller implements Initializable {
             @Override
             public void handle(KeyEvent event) {
                 url.setText(b.webEngine.getLocation());
+            }
+        });
+        check.setOnAction(new EventHandler<ActionEvent>(){
+
+            @Override
+            public void handle(ActionEvent event) {
+                CheckBox chk = (CheckBox) event.getSource();
+                System.out.println("Action performed on checkbox " + chk.getText());
+                Stage w=(Stage)anchor.getScene().getWindow();
+                if(chk.isSelected()){
+                    w.setAlwaysOnTop(true);
+                }else{
+                    w.setAlwaysOnTop(false);
+                }
             }
         });
     }

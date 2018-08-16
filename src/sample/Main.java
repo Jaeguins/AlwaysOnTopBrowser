@@ -7,6 +7,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -21,7 +22,8 @@ public class Main extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
             Scene scene = new Scene(root,400,400);
-            primaryStage.setTitle("AppMain");
+            primaryStage.setTitle("AOT Browser");
+            primaryStage.getIcons().add(new Image("file:resource//icon.png"));
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch(Exception e) {
